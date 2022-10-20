@@ -1,14 +1,14 @@
 FROM alpine:latest as base
 
-RUN adduser -u 10000 -H -D ${PROJECT_NAME}
+RUN adduser -u 10000 -H -D discord-command-cleaner
 
 FROM scratch
 
 COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=base /etc/passwd /etc/passwd
 
-COPY ${PROJECT_NAME} /bin/${PROJECT_NAME}
+COPY discord-command-cleaner /bin/discord-command-cleaner
 
-USER ${PROJECT_NAME}
+USER discord-command-cleaner
 
-ENTRYPOINT [ "/bin/${PROJECT_NAME}" ]
+ENTRYPOINT [ "/bin/discord-command-cleaner" ]

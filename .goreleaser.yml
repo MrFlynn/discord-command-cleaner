@@ -1,4 +1,4 @@
-project_name: ${PROJECT_NAME}
+project_name: discord-command-cleaner
 before:
   hooks:
     - go mod download
@@ -25,24 +25,24 @@ dockers:
   - ids:
       - default
     image_templates:
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-amd64"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-amd64"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-amd64"
     use: buildx
     dockerfile: Dockerfile
     build_flag_templates:
       - "--pull"
       - "--label=org.opencontainers.image.created={{ .Date }}"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
-      - "--label=org.opencontainers.image.licenses=${LICENSE_NAME}"
+      - "--label=org.opencontainers.image.licenses=MIT"
       - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
       - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.source=${GIT_URL}"
+      - "--label=org.opencontainers.image.source=https://github.com/MrFlynn/discord-command-cleaner"
       - "--platform=linux/amd64"
   - ids:
       - default
     image_templates:
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-arm64v8"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-arm64v8"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-arm64v8"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-arm64v8"
     use: buildx
     dockerfile: Dockerfile
     goarch: arm64
@@ -50,16 +50,16 @@ dockers:
       - "--pull"
       - "--label=org.opencontainers.image.created={{ .Date }}"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
-      - "--label=org.opencontainers.image.licenses=${LICENSE_NAME}"
+      - "--label=org.opencontainers.image.licenses=MIT"
       - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
       - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.source=${GIT_URL}"
+      - "--label=org.opencontainers.image.source=https://github.com/MrFlynn/discord-command-cleaner"
       - "--platform=linux/arm64/v8"
   - ids:
       - default
     image_templates:
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-armv7"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-armv7"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-armv7"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-armv7"
     use: buildx
     dockerfile: Dockerfile
     goarch: arm
@@ -68,22 +68,22 @@ dockers:
       - "--pull"
       - "--label=org.opencontainers.image.created={{ .Date }}"
       - "--label=org.opencontainers.image.title={{ .ProjectName }}"
-      - "--label=org.opencontainers.image.licenses=${LICENSE_NAME}"
+      - "--label=org.opencontainers.image.licenses=MIT"
       - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
       - "--label=org.opencontainers.image.version={{ .Version }}"
-      - "--label=org.opencontainers.image.source=${GIT_URL}"
+      - "--label=org.opencontainers.image.source=https://github.com/MrFlynn/discord-command-cleaner"
       - "--platform=linux/arm/v7"
 docker_manifests:
-  - name_template: "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}"
+  - name_template: "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}"
     image_templates:
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-amd64"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-arm64v8"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:{{ .Version }}-armv7"
-  - name_template: "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-amd64"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-arm64v8"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:{{ .Version }}-armv7"
+  - name_template: "ghcr.io/mrflynn/{{ .ProjectName }}:latest"
     image_templates:
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-amd64"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-arm64v8"
-      - "ghcr.io/${PROJECT_OWNER}/{{ .ProjectName }}:latest-armv7"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-amd64"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-arm64v8"
+      - "ghcr.io/mrflynn/{{ .ProjectName }}:latest-armv7"
 checksum:
   name_template: SHASUMS.txt
 snapshot:
